@@ -1,0 +1,36 @@
+<!-- update-recipe.ejs -->
+
+
+
+<div class="container">
+    <h1 class="mt-5">Update Recipe</h1>
+    <form action="/recipe/<%= recipe._id %>/update" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Recipe Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="<%= recipe.name %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required><%= recipe.description %></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="ingredients" class="form-label">Ingredients</label>
+            <textarea class="form-control" id="ingredients" name="ingredients" rows="3" required><%= recipe.ingredients.join('\n') %></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" id="category" name="category" required>
+                <option value="Dessert" <%= recipe.category === 'Dessert' ? 'selected' : '' %>>Dessert</option>
+                <option value="Drink" <%= recipe.category === 'Drink' ? 'selected' : '' %>>Drink</option>
+                <option value="Vegetarian" <%= recipe.category === 'Vegetarian' ? 'selected' : '' %>>Vegetarian</option>
+                <option value="NonVegetarian" <%= recipe.category === 'NonVegetarian' ? 'selected' : '' %>>Non-Vegetarian</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Recipe</button>
+    </form>
+</div>
+
